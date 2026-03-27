@@ -12,6 +12,8 @@ public class Main {
         whatIsAProgram();
         compilation();
         execution();
+        whatIsSyntax();
+        someGeneralSyntax();
     }
 
     // --------------------------------------------------------------------------------------------
@@ -69,7 +71,7 @@ public class Main {
                 need to be able to be understood by other developers. This is why we have
                 programming languages. We could just write programs in machine code, but we
                 choose to write programs using language so that it is more ergonomic and
-                easily understood by both ourselves and others. This is why we have 
+                easily understood by both ourselves and others. This is why we have
                 Assembly, Java, C, and the thousands of other languages. So, a program is a
                 set of instuctions for the computer and for humans.
                 """);
@@ -115,7 +117,7 @@ public class Main {
     public static void execution() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                      How Does a Program Execute? 
+                                      How Does a Program Execute?
                 ---------------------------------------------------------------------------
 
                 Code executes one step at a time. This is most often one line at a time:
@@ -132,6 +134,92 @@ public class Main {
                 then \"moves\" into that function being called and the steps continue. Once
                 the end of the called function reaches its end, like lets say after
                 goalsOfThisCourse() calls println(), the end of the function is reached.
+                The program then returns from the function, back upwards into the calling
+                function, in our case main. The main function then continues to the next
+                line, going into any functions that are next until the end of the main
+                function, which then returns and exits the program.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void whatIsSyntax() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                            What Is Syntax?
+                ---------------------------------------------------------------------------
+
+                What does \"syntax\" mean? This word describes the words and symbols
+                we use to write in our programming language, along with the structure
+                of the symbols to create statements. For example, we use the parentheses to
+                say that a name is a function. We will go over a ton of syntax. These words
+                we use are the building blocks of any language, human or computer. They
+                describe the words and grammar rules to create sentences.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void someGeneralSyntax() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                           Some General Syntax 
+                ---------------------------------------------------------------------------
+
+                All programming statements end with a semicolon. This tells the compiler
+                that we reached the end of a statement. Do NOT forget to put a semicolon.
+                The program will not compile with out them. If you forget you will get some
+                really strange compilation errors.
+
+                Since code is meant not just for computers, but for humans as well, we
+                sometimes need to communicate something to humans that the computer will
+                not be able to execute. These are called comments. We have to ways to make
+                comments: a single-line comment and a multiline block comment. I'll show
+                you the first way.
+
+                // This is a single line comment. We make it with the forward slashes.
+                """);
+        // This is a single line comment. We make it with the forward slashes.
+
+        out.println("""
+                Single-line comments are meant to be only on one line. You can technically
+                write a bunch of them on multiple lines. But, that is what the block
+                comment is for. I'll show you what that looks like.
+
+                /*
+                 * This is a multiline block comment!
+                 * We define it with the forward slash and then the star symbol. Every new
+                 * line starts with a star symbol. It ends with a star and forward slash
+                 * adjacent to each other.
+                 */
+                """);
+        /*
+         * This is a multiline block comment!
+         * We define it with the forward slash and then the star symbol. Every new
+         * line starts with a star symbol. It ends with a star and forward slash
+         * adjacent to each other.
+         */
+
+        out.println("""
+                Comments are a good way to communicate weird things that the code is
+                doing. Comments should NOT explain the code. They should simply be used
+                to document code for other readers, or they should be used to explain
+                something unorthodox that is being done.
+
+                At the top of this file you may notice this:
+
+                        import static java.lang.System.out;
+
+                This is a static import of the out static member of the System object
+                that is a part of the java.lang package. This enables us to use the out
+                member without having to type System. This shortens this line:
+                                    System.out.println();
+                to:
+                                    out.println();
+                which is much less annoyingly long to type. You can only statically
+                import a static data member of a class. To find these you'd have to
+                just try it, or look at the docs for the class; in this case System.
+
+                Another kind of import is the normal import which does not use the static
+                keyword. This normal import 
                 """);
     }
 
