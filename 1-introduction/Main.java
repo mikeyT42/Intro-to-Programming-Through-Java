@@ -332,7 +332,242 @@ public class Main {
     }
 
     // --------------------------------------------------------------------------------------------
-    public static void operators() {}
+    public static void operators() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            Operators
+                ---------------------------------------------------------------------------
+
+                There are many operators, we will go over the assignment operator, and the
+                various arithmetic operators.
+                """);
+        assignmentOperator();
+        arithmeticOperators();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void assignmentOperator() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                Assignment Operator
+                ---------------------------------------------------------------------------
+
+                The assignment operator is quite simple. The syntax looks generally like
+                this:
+                            leftVariable = rightValue;
+                With some examples like this:
+                            x = 10;
+                            y = z;
+                We can assign a value to the left variable, or we can assign a variable to
+                the left variable. In that latter scenario, the value of what is inside the
+                variable on the right gets copied into the variable on the left. So, let's
+                say we had some code like this:
+                            int a = 10;
+                            int b = 20;
+                            int c = b;
+                What are inside each variables--each \"box\"? Inside of a is 10; inside of
+                b is 20; and inside of c is also 20. When the assignment occured, the value
+                was copied--duplicated--into c. If we make a change to b:
+                            b = a;
+                Then c stays the same because the value of b was copied into c. So now the
+                values in memory is:
+                            a : 10
+                            b : 10
+                            c : 20
+                This gets a bit more complicated for classes, but for primitive types this
+                is how it works.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void arithmeticOperators() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                Arithmetic Operators
+                ---------------------------------------------------------------------------
+
+                There are various arithmetic operators, some of which will be familiar,
+                others that will be not so. They have different behavior depending on the
+                data type the operator is operating on. When working on integers, integer
+                operations are performed, so no decimal points are calculated; when working
+                on floating point numbers--like float or double--floating point operations
+                occur and decimals are calculated. Floating point precision errors make
+                things complicated especially for comparisons. Finally, the operators more
+                or less follow PEMDAS.
+                """);
+        addition();
+        subtraction();
+        multiplication();
+        division();
+        modulus();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void addition() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                    Addition Operator
+                ---------------------------------------------------------------------------
+
+                The addition operator (+) adds the two numbers--or variables--together.
+                Let's see what this looks like:
+                            int i = 1 + 2;
+                """);
+        int i = 1 + 2;
+        out.println("           i is " + i);
+
+        out.println("""
+                We can also add and assign at the same time with the += operator. This
+                operator turns this:
+                            i = i + 5
+                into:
+                            i += 5;
+                """);
+        // i = i + 5;
+        i += 5;
+        out.println("           i is " + i);
+
+        out.println("""
+                You'll also notice the addition operator is used for Strings. You can use
+                it to append two Strings together, or append some other type to a String
+                like an integer and it will be represented as a String.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void subtraction() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                    Subtraction Operator
+                ---------------------------------------------------------------------------
+
+                The subtraction operator (-) subtracts the two numbers--or variables--from
+                each other. Let's see what this looks like:
+                            int i = 5 - 3;
+                """);
+        int i = 5 - 3;
+        out.println("           i is " + i);
+
+        out.println("""
+                We can also subtract and assign at the same time with the -= operator. This
+                operator turns this:
+                            i = i - 4
+                into:
+                            i -= 4;
+                """);
+        // i = i - 4;
+        i -= 4;
+        out.println("           i is " + i);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void multiplication() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                    Multiplication Operator
+                ---------------------------------------------------------------------------
+
+                The multiplication operator (*) multiplies two numbers--or variables--from
+                each other. Let's see what this looks like:
+                            int i = 2 * 10;
+                """);
+        int i = 2 * 20;
+        out.println("           i is " + i);
+
+        out.println("""
+                We can also multiply and assign at the same time with the *= operator. This
+                operator turns this:
+                            i = i * 3
+                into:
+                            i *= 3;
+                """);
+        // i = i * 3;
+        i *= 3;
+        out.println("           i is " + i);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void division() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                    Division Operator
+                ---------------------------------------------------------------------------
+
+                The division operator (/) divides two numbers--or variables--from each
+                other. Let's see what this looks like:
+                            int i = 10 / 2;
+                """);
+        int i = 10 / 2;
+        out.println("           i is " + i);
+
+        out.println("""
+                We can also divide and assign at the same time with the /= operator. This
+                operator turns this:
+                            i = i / 2
+                into:
+                            i *= 3;
+                """);
+        // i = i / 2;
+        i /= 2;
+        out.println("           i is " + i);
+
+        out.println("""
+                You may notice we did not get the fractional part of this division.
+                This is because we have divided an integer and not a decimal number.
+                When doing integer division we can't keep track of the decimal part.
+                What happens? That data is never calculated. So, whatever fractional
+                part that should exist can be thought of as \"dropped.\" This is
+                called \"truncation.\"
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void modulus() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                                    Modulus Operator
+                ---------------------------------------------------------------------------
+
+                The modulus operator (%) gives us the remainder of the division of two
+                numbers--or variables--from each other. Let's see what this looks like:
+                            int x = 5 / 2;
+                            int y = 5 % 2;
+                """);
+        int x = 5 / 2;
+        int y = 5 % 2;
+        out.println("           x is " + x);
+        out.println("           y is " + y);
+
+        out.println("""
+                Here we can see that the division of 5 by 2 gives us 2, while the
+                modulus of 5 by 2 gives us 1. This is the remaining number from our
+                original division to give us 5:
+                            x + x + y = 5
+                Let's see another example.
+                """);
+
+        x = 10 / 5;
+        y = 10 % 5;
+        out.println("           x is " + x);
+        out.println("           y is " + y);
+
+        out.println("""
+                Here we can see that our modulus of 10 by 5 gives us 0: why is that?
+                This is because there is no remainder from the division of 10 by 5.
+                """);
+
+        out.println("""
+                We can also modulus and assign at the same time with the %= operator. This
+                operator turns this:
+                            i = i % 2
+                into:
+                            i %= 2;
+                """);
+        int i = 10;
+        // i = i % 2;
+        i %= 2;
+        out.println("           i is " + i);
+    }
 
     // --------------------------------------------------------------------------------------------
     public static void clear() {
