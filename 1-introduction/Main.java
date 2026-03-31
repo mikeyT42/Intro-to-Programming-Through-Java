@@ -5,7 +5,7 @@ public class Main {
         clear();
         out.println("""
                 ---------------------------------------------------------------------------
-                                    This is the Whiteboard For Today
+                    Chapter 1: An Introduction to Programming Through Java
                 ---------------------------------------------------------------------------
                 """);
         goalsOfThisCourse();
@@ -20,7 +20,7 @@ public class Main {
     public static void goalsOfThisCourse() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                        Goals of this Course
+                        Goals of this Course
                 ---------------------------------------------------------------------------
 
                 The goals of this course is to introduce software engineering. I have
@@ -52,7 +52,7 @@ public class Main {
     public static void whatIsAProgram() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                            What is a Program
+                        What is a Program
                 ---------------------------------------------------------------------------
 
                 A simple question, but a very good starting point, is \"what is a
@@ -81,7 +81,7 @@ public class Main {
     public static void compilation() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                              Compilation
+                        Compilation
                 ---------------------------------------------------------------------------
 
                 How does our code that we write--in our case Java--become something that
@@ -99,17 +99,17 @@ public class Main {
 
                 This is a huge advantage over fully compiled languages, like C, where you
                 have to compile for the machine you want to run on. This one thing enabled
-                the website revolution in the late 90's and early 2000's.
+                Java's wide spread adoption during the website revolution in the late 90's
+                and early 2000's.
 
                 Now, what does the Java compiler do other than make JVM bytecode; or
                 really, how does the compiler go from Java source code to JVM bytecode? I
                 am really going to only give a broad-stroke overview, what the compiler
-                does is quite a bit with many internal steps. First, it creates
-                references to the imported code defined in the beginning of the file. That
-                is used in the type-checking process: which is next. After that, it parses
-                your code for any syntax issues. Basically after that point, it creates
-                the JVM bytecode for that particular file, which includes references to
-                the imported classes.
+                does is quite a bit with many internal steps. First, it copies the full
+                name of the classes imported to all of the places the short name is used.
+                That is used in the type-checking process: which is next. After that, it
+                parses your code for any syntax issues. Basically after that point, it
+                creates the JVM bytecode for that particular file.
                 """);
     }
 
@@ -117,7 +117,7 @@ public class Main {
     public static void execution() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                      How Does a Program Execute?
+                        How Does a Program Execute?
                 ---------------------------------------------------------------------------
 
                 Code executes one step at a time. This is most often one line at a time:
@@ -145,7 +145,7 @@ public class Main {
     public static void whatIsSyntax() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                            What Is Syntax?
+                        What Is Syntax?
                 ---------------------------------------------------------------------------
 
                 What does \"syntax\" mean? This word describes the words and symbols
@@ -161,7 +161,7 @@ public class Main {
     public static void someGeneralSyntax() {
         out.println("""
                 ---------------------------------------------------------------------------
-                                           Some General Syntax 
+                        Some General Syntax
                 ---------------------------------------------------------------------------
 
                 All programming statements end with a semicolon. This tells the compiler
@@ -219,9 +219,120 @@ public class Main {
                 just try it, or look at the docs for the class; in this case System.
 
                 Another kind of import is the normal import which does not use the static
-                keyword. This normal import 
+                keyword. This normal import allows us to not use the fully qualified name
+                of any other class in our code. This turns something like:
+                                    java.io.File f = new java.io.File();
+                into:
+                                    File f = new File();
+                The import statement allows us to do that second example's shorthand.
+                """);
+
+        declaringAndDefiningVariables();
+        operators();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void declaringAndDefiningVariables() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            Declaring and Defining Variables
+                ---------------------------------------------------------------------------
+
+                Variable definitions come in 2 flavors: local variables defined inside of
+                functions, and class member fields, or members, defined as a part of a
+                class. The latter we will go over later when we talk about classes, so for
+                the time being let's go over the local variables first.
+
+                First, there are local varible definitions. Variables defined in functions
+                have this syntax (omit the first <>):
+                            <optional modifier> <type> <variable name>;
+                Let's define a variable with a simple definition:
+                            int myInteger;
+                """);
+
+        int myInteger;
+
+        out.println("""
+                This is a variable named myInteger with a type of int, meaning it is an
+                integer (whole) number. This variable has no data, it has simply been
+                defined. Let's assign it some initial data:
+                            myInteger = 10;
+                """);
+        myInteger = 10;
+
+        out.println("""
+                Now, the variable myInteger has inside of it the value 10. What do I mean
+                by \"inside\" though? All variables are stored in memory, so I want you to
+                think of all variables as a \"box\". The variable itself is the \"box\"
+                and initially a \"box\" has nothing inside of it: we have to put
+                something inside of it. That is where assignment comes in: we actually
+                put something in the box we have just created. So, when defining a
+                variable we tell the computer to set asside a box big enough for our data
+                and then when we assign to that variable we tell the computer to put
+                inside that box the data we want.
+
+                Now, how do we actually assign? I brushed past it, but this is our first
+                operator that we will be learning of. The \"assignment operator\" is the
+                \"=\" sign. The variable goes on the left side of the operator, and the
+                value, or even another variable, goes on the right side of the operator.
+                The right value, or value of another variable, goes into the variable on
+                the left.
+
+                Ok, let's now see the value is inside of myInteger:
+                """);
+        out.println(
+                "           myInteger is " + myInteger);
+
+        out.println("""
+                Now, we can also define and assign in the same statement. This is called
+                defining and initializing a variable. We can do it like this:
+                            int myInteger2 = 50;
+                """);
+        int myInteger2 = 50;
+
+        out.println("""
+                Let's see what is inside of myInteger2:
+                """);
+        out.println(
+                "           myInteger2 is " + myInteger2);
+
+        out.println("""
+                Now, we can get to the optional modifier business. In Java, local
+                variables only have one modifier, the \"final\" keyword. Let's make our
+                first one:
+                            final int MY_CONSTANT = 20;
+                            final int MY_CONSTANT2;
+                            MY_CONSTANT2 = 70;
+                """);
+        final int MY_CONSTANT = 20;
+        final int MY_CONSTANT2;
+        MY_CONSTANT2 = 70;
+
+        out.println("""
+                The final keyword marks that variable as un-assignable after it has been
+                given an inital value, essentially, you can't assign to it twice. You may
+                wonder though about MY_CONSTANT2: how come we can assign to it after it
+                has been defined? Well, because an initial value hasn't been given we can
+                assign to it afterwards, we just won't be able assign to it again. If that
+                \"final\" rule is broken, then we get a compilation error. Now, your
+                initial thought may be why introduce something that can give compilation
+                errors to your code? For one simple reason, certain guarantees around
+                data \"immutability.\"
+
+                This is where the value of the final keyword comes in. Let's say we have a
+                variable we don't want any other code to change? Someone--including
+                yourself--could change the value inside that variable unless we mark it as
+                final, therefore introducing a potential--and likely--bug into the code
+                because the rest of the code that uses that variable assumes a final value.
+                This is why it is better to have the error during compilation and not
+                during the runtime of the program: it is better there are errors as close
+                as possible to compilation time because there won't be bugs when the code
+                is running in production.
                 """);
     }
+
+    // --------------------------------------------------------------------------------------------
+    public static void operators() {}
 
     // --------------------------------------------------------------------------------------------
     public static void clear() {
