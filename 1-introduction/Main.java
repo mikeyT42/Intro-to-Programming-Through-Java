@@ -104,7 +104,7 @@ public class Main {
 
                 Now, what does the Java compiler do other than make JVM bytecode; or
                 really, how does the compiler go from Java source code to JVM bytecode? I
-                am really going to only give a broad-stroke overview, what the compiler
+                am really going to only give a broad-stroke overview: what the compiler
                 does is quite a bit with many internal steps. First, it copies the full
                 name of the classes imported to all of the places the short name is used.
                 That is used in the type-checking process: which is next. After that, it
@@ -171,7 +171,7 @@ public class Main {
 
                 Since code is meant not just for computers, but for humans as well, we
                 sometimes need to communicate something to humans that the computer will
-                not be able to execute. These are called comments. We have to ways to make
+                not be able to execute. These are called comments. We have two ways to make
                 comments: a single-line comment and a multiline block comment. I'll show
                 you the first way.
 
@@ -181,7 +181,7 @@ public class Main {
 
         out.println("""
                 Single-line comments are meant to be only on one line. You can technically
-                write a bunch of them on multiple lines. But, that is what the block
+                write a bunch of them on multiple lines; but, that is what the block
                 comment is for. I'll show you what that looks like.
 
                 /*
@@ -206,14 +206,18 @@ public class Main {
 
                 At the top of this file you may notice this:
 
-                        import static java.lang.System.out;
+                                import static java.lang.System.out;
 
                 This is a static import of the out static member of the System object
                 that is a part of the java.lang package. This enables us to use the out
                 member without having to type System. This shortens this line:
-                                    System.out.println();
+
+                                System.out.println();
+
                 to:
-                                    out.println();
+
+                                out.println();
+
                 which is much less annoyingly long to type. You can only statically
                 import a static data member of a class. To find these you'd have to
                 just try it, or look at the docs for the class; in this case System.
@@ -221,9 +225,11 @@ public class Main {
                 Another kind of import is the normal import which does not use the static
                 keyword. This normal import allows us to not use the fully qualified name
                 of any other class in our code. This turns something like:
-                                    java.io.File f = new java.io.File();
+
+                                java.io.File f = new java.io.File();
                 into:
-                                    File f = new File();
+
+                                File f = new File();
                 The import statement allows us to do that second example's shorthand.
                 """);
 
@@ -246,8 +252,11 @@ public class Main {
 
                 First, there are local varible definitions. Variables defined in functions
                 have this syntax (omit the first <>):
+
                             <optional modifier> <type> <variable name>;
+
                 Let's define a variable with a simple definition:
+
                             int myInteger;
                 """);
 
@@ -257,18 +266,19 @@ public class Main {
                 This is a variable named myInteger with a type of int, meaning it is an
                 integer (whole) number. This variable has no data, it has simply been
                 defined. Let's assign it some initial data:
+
                             myInteger = 10;
                 """);
         myInteger = 10;
 
         out.println("""
                 Now, the variable myInteger has inside of it the value 10. What do I mean
-                by \"inside\" though? All variables are stored in memory, so I want you to
+                by \"inside\" though? All variables are stored in memory. I want you to
                 think of all variables as a \"box\". The variable itself is the \"box\"
                 and initially a \"box\" has nothing inside of it: we have to put
                 something inside of it. That is where assignment comes in: we actually
                 put something in the box we have just created. So, when defining a
-                variable we tell the computer to set asside a box big enough for our data
+                variable we tell the computer to set aside a box big enough for our data
                 and then when we assign to that variable we tell the computer to put
                 inside that box the data we want.
 
@@ -282,11 +292,13 @@ public class Main {
                 Ok, let's now see the value is inside of myInteger:
                 """);
         out.println(
-                "           myInteger is " + myInteger);
+                "            myInteger is " + myInteger);
 
         out.println("""
+
                 Now, we can also define and assign in the same statement. This is called
                 defining and initializing a variable. We can do it like this:
+
                             int myInteger2 = 50;
                 """);
         int myInteger2 = 50;
@@ -295,12 +307,14 @@ public class Main {
                 Let's see what is inside of myInteger2:
                 """);
         out.println(
-                "           myInteger2 is " + myInteger2);
+                "            myInteger2 is " + myInteger2);
 
         out.println("""
+
                 Now, we can get to the optional modifier business. In Java, local
                 variables only have one modifier, the \"final\" keyword. Let's make our
                 first one:
+
                             final int MY_CONSTANT = 20;
                             final int MY_CONSTANT2;
                             MY_CONSTANT2 = 70;
@@ -355,26 +369,36 @@ public class Main {
 
                 The assignment operator is quite simple. The syntax looks generally like
                 this:
+
                             leftVariable = rightValue;
+
                 With some examples like this:
+
                             x = 10;
                             y = z;
+
                 We can assign a value to the left variable, or we can assign a variable to
                 the left variable. In that latter scenario, the value of what is inside the
                 variable on the right gets copied into the variable on the left. So, let's
                 say we had some code like this:
+
                             int a = 10;
                             int b = 20;
                             int c = b;
+
                 What are inside each variables--each \"box\"? Inside of a is 10; inside of
                 b is 20; and inside of c is also 20. When the assignment occured, the value
                 was copied--duplicated--into c. If we make a change to b:
+
                             b = a;
+
                 Then c stays the same because the value of b was copied into c. So now the
                 values in memory is:
+
                             a : 10
                             b : 10
                             c : 20
+
                 This gets a bit more complicated for classes, but for primitive types this
                 is how it works.
                 """);
@@ -412,23 +436,29 @@ public class Main {
 
                 The addition operator (+) adds the two numbers--or variables--together.
                 Let's see what this looks like:
+
                             int i = 1 + 2;
                 """);
         int i = 1 + 2;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 We can also add and assign at the same time with the += operator. This
                 operator turns this:
+
                             i = i + 5
+
                 into:
+
                             i += 5;
                 """);
         // i = i + 5;
         i += 5;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 You'll also notice the addition operator is used for Strings. You can use
                 it to append two Strings together, or append some other type to a String
                 like an integer and it will be represented as a String.
@@ -444,21 +474,26 @@ public class Main {
 
                 The subtraction operator (-) subtracts the two numbers--or variables--from
                 each other. Let's see what this looks like:
+
                             int i = 5 - 3;
                 """);
         int i = 5 - 3;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 We can also subtract and assign at the same time with the -= operator. This
                 operator turns this:
+
                             i = i - 4
+
                 into:
+
                             i -= 4;
                 """);
         // i = i - 4;
         i -= 4;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
     }
 
     // --------------------------------------------------------------------------------------------
@@ -470,21 +505,26 @@ public class Main {
 
                 The multiplication operator (*) multiplies two numbers--or variables--from
                 each other. Let's see what this looks like:
+
                             int i = 2 * 10;
                 """);
         int i = 2 * 20;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 We can also multiply and assign at the same time with the *= operator. This
                 operator turns this:
+
                             i = i * 3
+
                 into:
+
                             i *= 3;
                 """);
         // i = i * 3;
         i *= 3;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
     }
 
     // --------------------------------------------------------------------------------------------
@@ -496,23 +536,29 @@ public class Main {
 
                 The division operator (/) divides two numbers--or variables--from each
                 other. Let's see what this looks like:
+
                             int i = 10 / 2;
                 """);
         int i = 10 / 2;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 We can also divide and assign at the same time with the /= operator. This
                 operator turns this:
+
                             i = i / 2
+
                 into:
+
                             i *= 3;
                 """);
         // i = i / 2;
         i /= 2;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
 
         out.println("""
+
                 You may notice we did not get the fractional part of this division.
                 This is because we have divided an integer and not a decimal number.
                 When doing integer division we can't keep track of the decimal part.
@@ -531,28 +577,33 @@ public class Main {
 
                 The modulus operator (%) gives us the remainder of the division of two
                 numbers--or variables--from each other. Let's see what this looks like:
+
                             int x = 5 / 2;
                             int y = 5 % 2;
                 """);
         int x = 5 / 2;
         int y = 5 % 2;
-        out.println("           x is " + x);
-        out.println("           y is " + y);
+        out.println("            x is " + x);
+        out.println("            y is " + y);
 
         out.println("""
+
                 Here we can see that the division of 5 by 2 gives us 2, while the
                 modulus of 5 by 2 gives us 1. This is the remaining number from our
                 original division to give us 5:
+
                             x + x + y = 5
+
                 Let's see another example.
                 """);
 
         x = 10 / 5;
         y = 10 % 5;
-        out.println("           x is " + x);
-        out.println("           y is " + y);
+        out.println("            x is " + x);
+        out.println("            y is " + y);
 
         out.println("""
+
                 Here we can see that our modulus of 10 by 5 gives us 0: why is that?
                 This is because there is no remainder from the division of 10 by 5.
                 """);
@@ -560,14 +611,17 @@ public class Main {
         out.println("""
                 We can also modulus and assign at the same time with the %= operator. This
                 operator turns this:
+
                             i = i % 2
+
                 into:
+
                             i %= 2;
                 """);
         int i = 10;
         // i = i % 2;
         i %= 2;
-        out.println("           i is " + i);
+        out.println("            i is " + i);
     }
 
     // --------------------------------------------------------------------------------------------
