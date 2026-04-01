@@ -649,7 +649,6 @@ public class Main {
                 pb = new ProcessBuilder("clear");
             }
 
-            // Inherit the current terminal's I/O
             pb.inheritIO();
 
             Process process = pb.start();
@@ -658,7 +657,6 @@ public class Main {
             if (exitCode != 0) {
                 System.err.println("Warning: clear command exited with code " + exitCode);
             }
-
         } catch (java.io.IOException e) {
             System.err.println("Failed to execute clear command (IOException): " + e.getMessage());
         } catch (InterruptedException e) {
