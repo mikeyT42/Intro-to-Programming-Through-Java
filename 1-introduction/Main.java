@@ -42,7 +42,7 @@ public class Main {
                 character. We will also be using camelCase for everything except class
                 names: class names will be PascalCase. I will also be forcing a strict way
                 of formatting our code. All function definitions wil have a function
-                seperator: look at this whiteboard file to see what I mean. I expect this
+                seperator: look at this chapter file to see what I mean. I expect this
                 formatting to be adhered to because I believe it allows for better writing
                 habits.
                 """);
