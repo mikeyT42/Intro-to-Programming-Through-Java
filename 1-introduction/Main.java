@@ -65,8 +65,8 @@ public class Main {
                 various languages that we can use: some are difficult to write, some are
                 more terse, some are more verbose, some are more esoteric, and some are
                 simple. These languages are not just a way to interact with the computer,
-                but also a way to interact with other developers. These instructions that we
-                write are not just read by the computer, but they are read by other
+                but also a way to interact with other developers. These instructions that
+                we write are not just read by the computer, but they are read by other
                 developers; these programs are altered by other developers; these programs
                 need to be able to be understood by other developers. This is why we have
                 programming languages. We could just write programs in machine code, but we
