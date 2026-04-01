@@ -343,6 +343,14 @@ public class Main {
                 during the runtime of the program: it is better there are errors as close
                 as possible to compilation time because there won't be bugs when the code
                 is running in production.
+
+                One final, touchy subject: how to name a variable. For one, variables that
+                are meant as constants should be all-caps in snake_case and should be
+                final. Next, just the name. I think a general guide should apply: the
+                larger the scope of the variable the more descriptive it should be; and the
+                more confusing the variable, the more descriptive its name should be. Now,
+                of course there should be a limit of length, not on shortness: names
+                shouldn't be crazy long.
                 """);
     }
 
@@ -631,6 +639,27 @@ public class Main {
                             Declaring and Defining Functions
                 ---------------------------------------------------------------------------
 
+                In this section, we will start explaining functions. Up to this point
+                we have been using and making them; but I have simply not explained
+                their syntax.
+
+                Functions, just like variables, must be declared and defined. In Java, this
+                happens in the same line. The syntax of a function declaration is as such:
+
+                function syntax:
+                <access modifier> <normal modifier> <return type> <name>(<argument list>)
+                argument list syntax, can be empty:
+                <optional final> <data type> <argument name> <optional , if more than 1>...
+
+                For the time being the first two will always be \"public static\" and we
+                will only be changing the return type, function name, and optional argument
+                list.
+
+                Function names are a bit touchy of a subject. You don't want them to be too
+                short, otherwise their purpose is missed by the reader; but you don't want
+                them to be too long because then it becomes too long to type and read. The
+                length issue is midigated by language LSPs, but still. The scope issue
+                noted in the variable section doesn't necessarily apply here.
                 """);
     }
 
