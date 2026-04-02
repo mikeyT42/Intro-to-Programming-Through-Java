@@ -660,6 +660,18 @@ public class Main {
                 them to be too long because then it becomes too long to type and read. The
                 length issue is midigated by language LSPs, but still. The scope issue
                 noted in the variable section doesn't necessarily apply here.
+
+                After the \"function signature\" that we made above, we get to the
+                \"function definition.\" This is the part of the function that actually has
+                the code the function executes when it is called. The start of the function
+                definition is with a \"{\" (opening curly bracket) and is on the same line
+                as the function signature. A function then ends with a \"}\" (closing curly
+                bracket). Between the opening and closing curly brackets is the code of the
+                function. This section is also the \"scope\" of the function. We'll get to
+                scope a bit later. Just know that everything defined inside of the function
+                is only for that function.
+
+                Now, let's move onto using, or \"calling\" functions.
                 """);
     }
 
