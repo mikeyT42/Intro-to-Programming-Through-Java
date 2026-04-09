@@ -27,15 +27,16 @@ public class Main {
                 chosen to do this through the language Java because it forces us to use the
                 same language we will be using in FRC. There are simpler programming
                 languages syntactically, like C, but the priority of this course is
-                preparation for the competition.
+                preparation for the competition while simultaneously building a strong
+                programming foundation for you to build on in the future through your
+                studies.
 
                 We will learn good coding habits, like proper and clear formatting, and
                 ways to structure simple programs. We will go over the various memory
                 mechanisms available to us: we will go over the stack vs. static vs. heap
                 memory. We will also go over the kind of data that we can use. We will go
-                over error handling through Exceptions. We will go over things that will
-                lay a decent foundation--you'd learn more foundations in C--though Java is
-                a good place to start.
+                over error handling through Exceptions. We will go over all of the
+                foundational programming concepts.
 
                 This course will adhere to some of the standards of the Java community. All
                 defined objects--and therefore file names--will begin with an uppercase
@@ -121,23 +122,23 @@ public class Main {
                 ---------------------------------------------------------------------------
 
                 Code executes one step at a time. This is most often one line at a time:
-                there are certain exceptions to this that'll we'll go over later. The
-                program starts in the \"Main\" class' \"main\" function. The main function
-                in Java always looks exactly the same as I have it written above. There is
-                a lot of syntax in just the main function's definition that I do not expect
-                or even want you to know yet--this is one of those things where Java's
-                syntax is a bit heavy for beginners that we have to wave away.
+                there are certain exceptions to this that we'll go over later. The program
+                starts in the \"Main\" class' \"main\" function. The main function in Java
+                always looks exactly the same as I have it written above. There is a lot of
+                syntax in just the main function's definition that I do not expect or even
+                want you to know yet--this is one of those things where Java's syntax is a
+                bit heavy for beginners that we have to wave away.
 
                 The lines inside the main function are then executed one line at a time.
                 Any function calls, like println() or clear() or goalsOfThisCourse(), are
                 \"called\" in order inside of main. When a function is called, the program
                 then \"moves\" into that function being called and the steps continue. Once
-                the end of the called function reaches its end, like lets say after
-                goalsOfThisCourse() calls println(), the end of the function is reached.
-                The program then returns from the function, back upwards into the calling
-                function, in our case main. The main function then continues to the next
-                line, going into any functions that are next until the end of the main
-                function, which then returns and exits the program.
+                the end of the called function is reached, like lets say after
+                goalsOfThisCourse() calls println(), the program then returns from the
+                function. It then goes back--or \"upwards\"--into the calling function, in
+                our case main. The main function then continues to the next line, going into
+                any functions that are next until the end of the main function, which then
+                itself returns and exits the program.
                 """);
     }
 
@@ -148,12 +149,16 @@ public class Main {
                         What Is Syntax?
                 ---------------------------------------------------------------------------
 
-                What does \"syntax\" mean? This word describes the words and symbols
-                we use to write in our programming language, along with the structure
-                of the symbols to create statements. For example, we use the parentheses to
-                say that a name is a function. We will go over a ton of syntax. These words
-                we use are the building blocks of any language, human or computer. They
-                describe the words and grammar rules to create sentences.
+                What does \"syntax\" mean? Syntax refers to the rules that govern how we
+                arrange and structure the words and symbols--the vocabulary of a
+                language--to form valid statements in a programming language.
+
+                For example, we use the parentheses--a vocabulary symbol--to say that a
+                name is a function.
+
+                We will go over a ton of syntax and vocabulary. These words and symbols we
+                use--the vocabulary--and the syntax--the rules governing how to combine
+                them--are the building blocks of any language, human or computer.
                 """);
     }
 
@@ -227,9 +232,11 @@ public class Main {
                 of any other class in our code. This turns something like:
 
                                 java.io.File f = new java.io.File();
+
                 into:
 
                                 File f = new File();
+
                 The import statement allows us to do that second example's shorthand.
                 """);
 
@@ -250,7 +257,7 @@ public class Main {
                 class. The latter we will go over later when we talk about classes, so for
                 the time being let's go over the local variables first.
 
-                First, there are local varible definitions. Variables defined in functions
+                First, there are local variable definitions. Variables defined in functions
                 have this syntax (omit the first <>):
 
                             <optional modifier> <type> <variable name>;
@@ -278,7 +285,7 @@ public class Main {
                 and initially a \"box\" has nothing inside of it: we have to put
                 something inside of it. That is where assignment comes in: we actually
                 put something in the box we have just created. So, when defining a
-                variable we tell the computer to set aside a box big enough for our data
+                variable we tell the computer to set aside a box big enough for our data;
                 and then when we assign to that variable we tell the computer to put
                 inside that box the data we want.
 
@@ -401,7 +408,7 @@ public class Main {
                             b = a;
 
                 Then c stays the same because the value of b was copied into c. So now the
-                values in memory is:
+                values in memory are:
 
                             a : 10
                             b : 10
@@ -501,7 +508,7 @@ public class Main {
                 """);
         // i = i - 4;
         i -= 4;
-        out.println("            i is " + i);
+        out.println("            i is " + i + '\n');
     }
 
     // --------------------------------------------------------------------------------------------
@@ -514,7 +521,7 @@ public class Main {
                 The multiplication operator (*) multiplies two numbers--or variables--from
                 each other. Let's see what this looks like:
 
-                            int i = 2 * 10;
+                            int i = 2 * 20;
                 """);
         int i = 2 * 20;
         out.println("            i is " + i);
@@ -532,7 +539,7 @@ public class Main {
                 """);
         // i = i * 3;
         i *= 3;
-        out.println("            i is " + i);
+        out.println("            i is " + i + '\n');
     }
 
     // --------------------------------------------------------------------------------------------
@@ -559,7 +566,7 @@ public class Main {
 
                 into:
 
-                            i *= 3;
+                            i /= 3;
                 """);
         // i = i / 2;
         i /= 2;
@@ -602,7 +609,10 @@ public class Main {
 
                             x + x + y = 5
 
-                Let's see another example.
+                Let's see another example:
+
+                            x = 10 / 5;
+                            y = 10 % 5;
                 """);
 
         x = 10 / 5;
@@ -629,7 +639,7 @@ public class Main {
         int i = 10;
         // i = i % 2;
         i %= 2;
-        out.println("            i is " + i);
+        out.println("            i is " + i + '\n');
     }
 
     // --------------------------------------------------------------------------------------------
@@ -639,16 +649,16 @@ public class Main {
                             Declaring and Defining Functions
                 ---------------------------------------------------------------------------
 
-                In this section, we will start explaining functions. Up to this point
-                we have been using and making them; but I have simply not explained
-                their syntax.
+                In this section, we will start explaining functions. Up to this point we
+                have been using and making them; but I have simply not explained their
+                syntax.
 
                 Functions, just like variables, must be declared and defined. In Java, this
                 happens in the same line. The syntax of a function declaration is as such:
 
                 function syntax:
                 <access modifier> <normal modifier> <return type> <name>(<argument list>)
-                argument list syntax, can be empty:
+                argument list syntax (can be empty):
                 <optional final> <data type> <argument name> <optional , if more than 1>...
 
                 For the time being the first two will always be \"public static\" and we
@@ -658,7 +668,7 @@ public class Main {
                 Function names are a bit touchy of a subject. You don't want them to be too
                 short, otherwise their purpose is missed by the reader; but you don't want
                 them to be too long because then it becomes too long to type and read. The
-                length issue is midigated by language LSPs, but still. The scope issue
+                length issue is mitigated by a language's LSP, but still. The scope issue
                 noted in the variable section doesn't necessarily apply here.
 
                 After the \"function signature\" that we made above, we get to the
@@ -671,8 +681,88 @@ public class Main {
                 scope a bit later. Just know that everything defined inside of the function
                 is only for that function.
 
-                Now, let's move onto using, or \"calling\" functions.
+                Now, let's move onto using, or \"calling\" functions. Let's call a function
+                that I have defined that has no arguments and returns nothing:
+
+                            functionA();
                 """);
+        functionA();
+
+        out.println("""
+                We call a function by typing its name, an opening parentheses, any data it
+                requires from its argument list, closing it with the closing parentheses,
+                and then finally a semicolon. In this particular case, since nothing is
+                asked for by the function, we have empty parentheses; but, what does it
+                look like if a function returns something and takes something in its
+                argument list?
+
+                            int i = 10;
+                            int j = functionB(i);
+                            out.println(\"j = \" + j);
+                """);
+        int i = 10;
+        int j = functionB(i);
+        out.println("j = " + j);
+
+        out.println("""
+
+                Here we have a variable, i, that is given, or \"passed\", to our function.
+                We then save the value returned by functionB into a different integer
+                variable called j. When we call a function the execution of the program
+                enters that function and then executes its code until it returns. A void
+                returning function does not need a return statement because it returns
+                nothing; but a function that does return something requires at least one
+                return statement and must return something if there are logical branches
+                in the code--we won't get into logic vocabulary and the syntax for the
+                various other control flow mechanisms until another class. We can see how
+                the control flow of our program is changed by the output of our program.
+
+                Next, we can also call functions by providing a literal value to the
+                function: we can also not save the returned value from a function if we so
+                choose:
+
+                            functionB(20);
+                """);
+        functionB(20);
+
+        out.println("""
+
+                Let's also take a look at a function that returns a double value (a
+                floating point type, a.k.a a decimal number) and takes two double
+                arguments:
+
+                            double h = functionC(20.5, 15.25);
+                            out.println(\"h = \" + h);
+                """);
+        double h = functionC(20.5, 15.25);
+        out.println("h = " + h);
+
+        out.println("""
+
+                The syntax is virtually the same. The only difference is that we separate
+                our arguments with a comma. This allows us to give any number of data to a
+                function as long as it accepts it.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void functionA() {
+        out.println("I am functionA and I return nothing.");
+        out.println("I do perform something though, I print out this text!\n");
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int functionB(int x) {
+        out.println("x = " + x);
+        return x + 10;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static double functionC(double x, double y) {
+        double j = x + y;
+        out.println("x + y = j");
+        out.println(String.format("%f + %f = %f", x, y, j));
+        return j;
     }
 
     // --------------------------------------------------------------------------------------------
