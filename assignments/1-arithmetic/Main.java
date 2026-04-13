@@ -9,11 +9,70 @@ public class Main {
                 ---------------------------------------------------------------------------
                 """);
 
+        int x = 5;
+        int y = 2;
+        int result;
+
+        result = add(x, y);
+        out.println("result = " + result);
+
+        result = subtract(x, y);
+        out.println("result = " + result);
+
+        result = multiply(x, y);
+        out.println("result = " + result);
+
+        result = divide(x, y);
+        out.println("result = " + result);
+
+        result = remainderOf(x, y);
+        out.println("result = " + result);
+
+        result = power(x, y);
+        out.println("result = " + result);
+
         out.println("""
+
                 ---------------------------------------------------------------------------
                                                Thank you
                 ---------------------------------------------------------------------------
                 """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int add(int x, int y) {
+        out.println("Adding " + x + " to " + y);
+        return x + y;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int subtract(int x, int y) {
+        out.println("Subtracting " + y + " from " + x);
+        return x - y;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int multiply(int x, int y) {
+        out.println("Multiplying " + x + " by " + y);
+        return x * y;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int divide(int x, int y) {
+        out.println("Dividing " + x + " by " + y);
+        return x / y;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int remainderOf(int x, int y) {
+        out.println("Getting the remainder of the division of " + x + " by " + y);
+        return x % y;
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static int power(int x, int y) {
+        out.println("Raising " + x + " to the power of " + y);
+        return (int) Math.pow(x, y);
     }
 
     // --------------------------------------------------------------------------------------------
