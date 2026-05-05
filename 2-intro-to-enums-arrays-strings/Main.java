@@ -5,7 +5,7 @@ public class Main {
         clear();
         out.println("""
                 ---------------------------------------------------------------------------
-                    Chapter 2: Intro to Enums, Arrays, and Strings
+                    Chapter 2: Intro to Arrays, Enums, and Strings
                 ---------------------------------------------------------------------------
                 """);
 
@@ -39,12 +39,12 @@ public class Main {
                 all. There is no length, and it holds nothing and no contiguous block has
                 been allocated: all this has done is make a symbol to refer to an array.
                 Notice something special about the variable definition: an array variable
-                is defined with the \"[]\" (open and close brackets). That one pair of
-                symbols attached to the variable's type turns the variable from a single
+                is defined with the \"[]\" (open and close square brackets). That one pair
+                of symbols attached to the variable's type turns the variable from a single
                 thing of whatever that type is into an array of whatever that type is. Now,
                 all that we have done though is define an array variable, but nothing has
                 been allocated. There is no contiguous block nor has there been any values
-                put in the especially because there are no contiguous \"boxes\" to put them.
+                put in them especially because there are no contiguous \"boxes\" to put them.
                 So, let's allocate a block, how do we do that?
 
                                 arrayA = new int[10];
@@ -61,16 +61,50 @@ public class Main {
                 enough to hold 10 integers contiguously--along with some additional data
                 about the array. Next, as far as the syntax you then have to put the data
                 type of the array (it needs to match up with the defined data type) and then
-                the open and close brackets with the length of the array on the inside of
-                those brackets. At this point, we now have a contiguous block of allocated
+                the open and close square brackets with the length of the array on the inside
+                of those brackets. At this point, we now have a contiguous block of allocated
                 memory for our data: how do we utilize it?
 
-                We do this with the array indexing operator, which is the same symbol for
-                the array definition and allocation length. This is how we access a
-                particular \"element\" in an array:
+                We must first see how to access data inside of the array. To do this with we
+                use the array indexing operator, which is the same symbol for the array
+                definition and allocation length. This is how we access a particular
+                \"element\" in an array:
 
-                                arrayA[0];
+                                arrayA[0]
+
+                Now that we have a way to access elements in the array, we can now talk about
+                writing to the array: the current array, arrayA, has no data. We use the
+                assignment operator to assign into the array at a given element like this:
+
+                                arrayA[0] = 1;
                 """);
+        arrayA[0] = 1;
+
+        out.println("""
+
+                This puts the number 1 inside of the first element inside of arrayA. Ok, you
+                may have noticed I said the first element, but why is the first element 0 and
+                not 1? This is because is most programming languages, Java included, array
+                indexing is 0 based. So, array indexing is counted as such: 0, 1, 2, 3,
+                ..., 8, 9. That's how you'd count to the last element inside of the arrayA
+                array.
+
+                Ok, now how do we read from the array? We do this by still using the array
+                indexing syntax, but instead of on the left side of the assignment, we go to
+                the right side. Let's take an example and assign what's in the first element
+                of arrayA into a variable:
+
+                                int b = arrayA[0];
+                """);
+        int b = arrayA[0];
+
+        out.println("""
+                We can also use the same syntax to just directly use what is inside of the
+                array: let's take an example of printing what's in our array to the screen:
+
+                        out.println("The first element inside arrayA = " + arrayA[0]);
+                """);
+        out.println("The first element inside arrayA = " + arrayA[0]);
     }
 
     // --------------------------------------------------------------------------------------------
