@@ -10,6 +10,7 @@ public class Main {
                 """);
 
         arrays();
+        enums();
     }
 
     // --------------------------------------------------------------------------------------------
@@ -96,6 +97,7 @@ public class Main {
 
                                 int b = arrayA[0];
                 """);
+        @SuppressWarnings("unused")
         int b = arrayA[0];
 
         out.println("""
@@ -105,6 +107,33 @@ public class Main {
                         out.println("The first element inside arrayA = " + arrayA[0]);
                 """);
         out.println("The first element inside arrayA = " + arrayA[0]);
+
+        out.println("""
+                Ok, now one final thing. An array has a given length and it is that length
+                we provide when creating the array with the new keyword; but, how do we get
+                that length anytime we want no matter where or when the array is being used?
+                We do this with a data member that is a part of the array. That member is
+                called length and we access it with the dot (.) operator:
+
+                            // arrayA.length
+                            out.println("arrayA.length is " + arrayA.length);
+                """);
+        // arrayA.length
+        out.println("arrayA.length is " + arrayA.length);
+
+        out.println("""
+                That's about it for arrays right now until we get a bit more advanced later
+                on. We will now continue to enumerations.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void enums() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                        Enumerations
+                ---------------------------------------------------------------------------
+                """);
     }
 
     // --------------------------------------------------------------------------------------------
