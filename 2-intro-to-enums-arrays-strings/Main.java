@@ -1,6 +1,10 @@
 import static java.lang.System.out;
 
 public class Main {
+    enum Color {
+        RED, GREEN, BLUE
+    }
+
     public static void main(String[] args) {
         clear();
         out.println("""
@@ -11,6 +15,7 @@ public class Main {
 
         arrays();
         enums();
+        strings();
     }
 
     // --------------------------------------------------------------------------------------------
@@ -133,6 +138,157 @@ public class Main {
                 ---------------------------------------------------------------------------
                         Enumerations
                 ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                We now start getting into making our own types. An enumeration is a way to
+                define named, constant, symbols that are grouped together by a common idea.
+                Let's go over this with an example. At the top of this file I have used the
+                enum keyword; after that we give the enumeration name; and finally define
+                enumeration values. Now, how then do we use this enum? Like any other type
+                really, with one caveat: we can only assign the values that we have defined
+                as a part of the enum to a variable of our enum type. Let's see this in
+                practice:
+                            Color background = Color.RED;
+                """);
+        @SuppressWarnings("unused")
+        Color background = Color.RED;
+
+        out.println("""
+                Look at that! Pretty neat right! We can make grouped symbols with symbolic
+                values. Now, why would we do this? For one, we can make certain limited
+                symbols valid for ourselves and other developers to use: everyone knows the
+                values because we have defined the values! This is particularly useful for
+                error codes. We could have an enum defined for error codes and return that
+                enumeration type from a validation function so that we can get specific
+                errors without having to memorize error code integers.
+
+                How though, are enumerations stored in memory? They need to be something.
+                They are special objects. We will be diving more into that later, just know
+                for now that is what they are.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void strings() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                        Strings
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                Finally, we'll go over some string basics. Strings in Java are full on
+                objects. They are complicated internally, and there is quite a bit going
+                on, but I still want you to have a solid grasp on what they are. Internally
+                a string is an immutable character array: this means once a string is
+                created it can never be changed. The number of characters in this array is
+                also known, and is stored as the length of the string. This enables us to
+                iterate over characters in the array and know where it ends, and do many
+                other operations. The character encoding of Java strings is UTF-16: we have
+                a lot of characters that we have access to.
+                """);
+
+        stringDeclarations();
+        String string = "Foo bar";
+        stringToFunctions(string);
+        String returnedString = returningStringLiterals();
+        out.println(String.format("Here is our returned string literal:\n\n" +
+                "\t%s\n\n",
+                returnedString));
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void stringDeclarations() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            Declaring String Variables
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                Strings can be created in many different ways. Since they are an object,
+                they are a complex data type, essentially they aren't primitive. Now, since
+                strings, internally, are specialized character arrays, we can create a
+                String object from a character array. Here is how we'd do it:
+
+                            char[] sChars = { 'H', 'e', 'l', 'l', 'o', ',', ' ',
+                                'W', 'o', 'r', 'l', 'd', '!', '\0' };
+                            String s = new String(sChars);
+                """);
+
+        char[] sChars = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0' };
+        String s = new String(sChars);
+
+        out.printf("s = %s\n\n", s);
+        out.println("""
+                As you can see, printf() stops when the end is reached: this occurs because
+                the length is known at creation of the string. That way, when operations
+                are done on the string, like printing it, the code knows when to stop.
+                Since a String is an object, we don't need to write a lot of string code
+                ourselves--even though at times it is quite trivial. These functions--or
+                methods--are a part of the object and are accessed with the dot (.)
+                operator; we can even access certain data associated with the string when
+                given access through a method. One of these pieces of data is the length.
+                Let's use it here:
+
+                            out.printf("len = %i\n\n", s.length());
+                """);
+        out.printf("len = %i\n\n", s.length());
+        out.println("""
+                As you can see, we grab the length by calling the length() method. It's
+                similar to how we'd call a function, but a method is attached to an object,
+                like our String.
+                """);
+
+        out.println("""
+                Ok, moving onto more ways to create Strings. The most common way to create
+                a string is with a string literal. We don't need to make a char array when
+                doing it like this. Here is what it'd look like:
+
+                            String s2 = "Foo";
+                """);
+        String s2 = "Foo";
+        out.printf("%s\n\n", s2);
+
+        out.println("""
+                Declaring and initializing in this way is far more common. A whole String
+                object is automatically created for us. An interesting point: really, all
+                of these println() and format strings for printf() are string literals.
+                The only difference is they are not assigned to a variable.
+                """);
+
+        String text = "Really, I can also write like this and then give it to puts().\n";
+        out.println(text);
+        String formatString = "I can even do this! My favorite number is %i.\n\n";
+        out.printf(formatString, 50);
+
+        out.println("""
+                Strings in Java are immutable, meaning once created they cannot be changed.
+                You can, however, build one up character by character using StringBuilder,
+                which allows you to build a String manually or iteravily:
+
+                            char c = 'a';
+                            StringBuilder sb = new StringBuilder();
+                            sb.append(c);
+                            sb.append(c);
+                            sb.append(c);
+                            String built = sb.toString();
+                """);
+
+        char c = 'a';
+        StringBuilder sb = new StringBuilder();
+        sb.append(c);
+        sb.append(c);
+        sb.append(c);
+        String built = sb.toString();
+        out.printf("%s\n\n", built);
+
+        out.println("""
+                Since Java manages memory for us, there is no risk overflowing our string's
+                internal char array, printing garbage, or leaving a string around when it's
+                not being used by anything. This, though, comes with a downside: we have less
+                direct control over the string; but a lot of times this is a good tradeoff.
                 """);
     }
 
