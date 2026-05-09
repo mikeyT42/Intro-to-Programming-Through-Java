@@ -40,7 +40,6 @@ public class Main {
         int[] arrayA;
 
         out.println("""
-
                 Here we declared an int array called arrayA that hasn't been initialized at
                 all. There is no length, and it holds nothing and no contiguous block has
                 been allocated: all this has done is make a symbol to refer to an array.
@@ -58,7 +57,6 @@ public class Main {
         arrayA = new int[10];
 
         out.println("""
-
                 We now have a contigous block of memory that can hold up to 10--and
                 absolutely no more than 10--integers. We have some new Java vocabulary with
                 this statement. First off, the \"new\" keyword. The \"new\" keyword tells
@@ -67,9 +65,9 @@ public class Main {
                 enough to hold 10 integers contiguously--along with some additional data
                 about the array. Next, as far as the syntax you then have to put the data
                 type of the array (it needs to match up with the defined data type) and then
-                the open and close square brackets with the length of the array on the inside
-                of those brackets. At this point, we now have a contiguous block of allocated
-                memory for our data: how do we utilize it?
+                the open and close square brackets with the length of the array on the
+                inside of those brackets. At this point, we now have a contiguous block of
+                allocated memory for our data: how do we utilize it?
 
                 We must first see how to access data inside of the array. To do this with we
                 use the array indexing operator, which is the same symbol for the array
@@ -78,22 +76,22 @@ public class Main {
 
                                 arrayA[0]
 
-                Now that we have a way to access elements in the array, we can now talk about
-                writing to the array: the current array, arrayA, has no data. We use the
-                assignment operator to assign into the array at a given element like this:
+                Now that we have a way to access elements in the array, we can now talk
+                about writing to the array: the current array, arrayA, has no data. We use
+                the assignment operator to assign into the array at a given element like
+                this:
 
                                 arrayA[0] = 1;
                 """);
         arrayA[0] = 1;
 
         out.println("""
-
                 This puts the number 1 inside of the first element inside of arrayA. Ok, you
-                may have noticed I said the first element, but why is the first element 0 and
-                not 1? This is because is most programming languages, Java included, array
-                indexing is 0 based. So, array indexing is counted as such: 0, 1, 2, 3,
-                ..., 8, 9. That's how you'd count to the last element inside of the arrayA
-                array.
+                may have noticed I said the first element, but why is the first element 0
+                and not 1? This is because is most programming languages, Java included,
+                array indexing is 0 based. So, array indexing is counted as such: 0, 1, 2,
+                3, ..., 8, 9. That's how you'd count to the last element inside of the
+                arrayA array.
 
                 Ok, now how do we read from the array? We do this by still using the array
                 indexing syntax, but instead of on the left side of the assignment, we go to
@@ -116,17 +114,18 @@ public class Main {
         out.println("""
                 Ok, now one final thing. An array has a given length and it is that length
                 we provide when creating the array with the new keyword; but, how do we get
-                that length anytime we want no matter where or when the array is being used?
-                We do this with a data member that is a part of the array. That member is
-                called length and we access it with the dot (.) operator:
+                that length anytime we want no matter where or when the array is being
+                used? We do this with a data member that is a part of the array. That
+                member is called length and we access it with the dot (.) operator:
 
                             // arrayA.length
                             out.println("arrayA.length is " + arrayA.length);
                 """);
         // arrayA.length
-        out.println("arrayA.length is " + arrayA.length);
+        out.println("\t\tarrayA.length is " + arrayA.length);
 
         out.println("""
+
                 That's about it for arrays right now until we get a bit more advanced later
                 on. We will now continue to enumerations.
                 """);
@@ -192,9 +191,9 @@ public class Main {
         stringDeclarations();
         String string = "Foo bar";
         stringToFunctions(string);
-        String returnedString = returningStringLiterals();
+        String returnedString = returningStrings();
         out.println(String.format("Here is our returned string literal:\n\n" +
-                "\t%s\n\n",
+                "\t\t%s\n\n",
                 returnedString));
     }
 
@@ -220,7 +219,7 @@ public class Main {
         char[] sChars = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0' };
         String s = new String(sChars);
 
-        out.printf("s = %s\n\n", s);
+        out.printf("\t\tsChars = %s\n\n", s);
         out.println("""
                 As you can see, printf() stops when the end is reached: this occurs because
                 the length is known at creation of the string. That way, when operations
@@ -232,9 +231,9 @@ public class Main {
                 given access through a method. One of these pieces of data is the length.
                 Let's use it here:
 
-                            out.printf("len = %i\n\n", s.length());
+                            out.printf("len = %d\\n\\n", s.length());
                 """);
-        out.printf("len = %i\n\n", s.length());
+        out.printf("\t\tlen = %d\n\n", s.length());
         out.println("""
                 As you can see, we grab the length by calling the length() method. It's
                 similar to how we'd call a function, but a method is attached to an object,
@@ -249,18 +248,25 @@ public class Main {
                             String s2 = "Foo";
                 """);
         String s2 = "Foo";
-        out.printf("%s\n\n", s2);
+        out.printf("s2 is now:\n\n\t\t%s\n\n", s2);
 
         out.println("""
                 Declaring and initializing in this way is far more common. A whole String
                 object is automatically created for us. An interesting point: really, all
                 of these println() and format strings for printf() are string literals.
                 The only difference is they are not assigned to a variable.
+
+                            String text = "Really, I can also write like this and then "+
+                                "give it to println().\\n";
+                            out.println(text);
+                            String formatString = "I can even do this! My favorite " +
+                                "number is %d.\\n\\n";
+                            out.printf(formatString, 50);
                 """);
 
-        String text = "Really, I can also write like this and then give it to puts().\n";
+        String text = "Really, I can also write like this and then give it to println().\n";
         out.println(text);
-        String formatString = "I can even do this! My favorite number is %i.\n\n";
+        String formatString = "I can even do this! My favorite number is %d.\n\n";
         out.printf(formatString, 50);
 
         out.println("""
@@ -282,7 +288,7 @@ public class Main {
         sb.append(c);
         sb.append(c);
         String built = sb.toString();
-        out.printf("%s\n\n", built);
+        out.printf("And the built string is now:\n\n\t\t%s\n\n", built);
 
         out.println("""
                 Since Java manages memory for us, there is no risk overflowing our string's
@@ -290,6 +296,56 @@ public class Main {
                 not being used by anything. This, though, comes with a downside: we have less
                 direct control over the string; but a lot of times this is a good tradeoff.
                 """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void stringToFunctions(String s) {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            Passing String Variables to Functions
+                ---------------------------------------------------------------------------
+                """);
+        out.println("""
+                Passing a string to a function is like passing any other primitive type to
+                a function. You declare that a function needs a string, and then in the
+                calling side you pass that string to it. This is simply how you do it:
+
+                            String string = "Foo bar";
+                            stringToFunctions(string);
+
+                There are some other details in this process that we will go over when
+                learning about objects; but until then we will not say anything further.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static String returningStrings() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            Returning Strings
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                Returning strings is just the same as returning a primitive type from a
+                function. You can use either a variable, like this:
+
+                            String foo = "foo";
+                            return foo;
+
+                Or you can return a string with a literal:
+
+                            return "foo";
+
+                It's just the same as with primitives. We can then use the variable returned
+                as such:
+
+                            String returnedString = returningStrings();
+                            out.println("Here is our returned string literal:\\n\\n\\t" +
+                                    returnedString);
+                """);
+
+        return "I am a returned string!";
     }
 
     // --------------------------------------------------------------------------------------------
