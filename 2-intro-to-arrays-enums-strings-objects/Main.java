@@ -9,13 +9,14 @@ public class Main {
         clear();
         out.println("""
                 ---------------------------------------------------------------------------
-                    Chapter 2: Intro to Arrays, Enums, and Strings
+                    Chapter 2: Intro to Arrays, Enums, Strings, and Objects
                 ---------------------------------------------------------------------------
                 """);
 
         arrays();
         enums();
         strings();
+        objects();
     }
 
     // --------------------------------------------------------------------------------------------
@@ -193,7 +194,7 @@ public class Main {
         stringToFunctions(string);
         String returnedString = returningStrings();
         out.println(String.format("Here is our returned string literal:\n\n" +
-                "\t\t%s\n\n",
+                "\t\t%s\n",
                 returnedString));
     }
 
@@ -293,8 +294,9 @@ public class Main {
         out.println("""
                 Since Java manages memory for us, there is no risk overflowing our string's
                 internal char array, printing garbage, or leaving a string around when it's
-                not being used by anything. This, though, comes with a downside: we have less
-                direct control over the string; but a lot of times this is a good tradeoff.
+                not being used by anything. This, though, comes with a downside: we have
+                less direct control over the string; but a lot of times this is a good
+                tradeoff.
                 """);
     }
 
@@ -337,8 +339,8 @@ public class Main {
 
                             return "foo";
 
-                It's just the same as with primitives. We can then use the variable returned
-                as such:
+                It's just the same as with primitives. We can then use the variable
+                returned as such:
 
                             String returnedString = returningStrings();
                             out.println("Here is our returned string literal:\\n\\n\\t" +
@@ -346,6 +348,209 @@ public class Main {
                 """);
 
         return "I am a returned string!";
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void objects() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                        Introduction to Objects
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                We have now arrived at a titular moment: learning about objects. This is
+                now when we learn about creating our OWN data types. Usually--up until we
+                got to Strings and arrays--we have been working with primitive types (int
+                double, etc.) but an object is a complex data type: it is made up of
+                primitive types--or even other complex data types. An important note: a
+                class must be defined in its own file! Check out the respective class'
+                files in order to see their full definition. Let's first go through the
+                definition of an object, also called a class. Here is the definition
+                structure of a class:
+
+                    <optional access modifier> <optional modifier> class <Name> {
+                        // The Data Member List
+                        <optional access modifier> <optional modifier> <data type> <name>;
+                        ...
+                    }
+
+                We will now go over the above structure through an example; our Person and
+                Point classes. Let's first look at our Point class:
+
+                            public class Point {
+                                public int x;
+                                public int y;
+                                ...
+                            }
+
+                The first word we see is \"public\". This keyword is the optional access
+                modifier. The available modifiers are \"public\", \"private\", \"protected\"
+                and nothing. These limit what other classes can even see the class being
+                defined. We aren't really going to go over these until later in the course,
+                so don't really worry about them. For our purposes right now, just make any
+                class you are defining \"public\". Then we have the \"class\" keyword, which
+                says that we are defining a class. After that in the name of the class in
+                PascalCase. Then we have the opening and closing curly-brackets: between
+                those brackets is the actually body--the code--of the class where all of its
+                defined data and functions (or methods now) are defined and written. For the
+                time being, we are going to be skipping methods until we talk about classes
+                a bit more in-depth later. Let's talk about the data member definitions now.
+
+                The data member definitions are that data that each object can hold. This
+                allows us to group related data together into a single thing (type) since
+                these pieces of data are logically related to each other. For example, a
+                point in a 2D graph has an x and a y value: so to represent a point we need
+                those pieces of data. A data member definition is almost exactly the same as
+                a variable definition: you can even define and initialize that data; but for
+                now we won't be doing that. We will only be defining and assigning later.
+
+                <optional access modifier> <optional modifiers list> <type> <variable name>;
+
+                The above is the syntax for a data member definition inside of a class. The
+                optional access modifier is the same thing as the optional access modifier
+                for a class, and obey the same rules: the only difference is that instead of
+                what external classes can see the class, it is what external class can see
+                that data member. Then you have the optional modifiers list. You can set a
+                data member to be \"final\", meaning after being set it can never change for
+                the life of the object, and \"static\" which means the data member is shared
+                between every class instance--we'll get to this instance idea in a minute.
+                Next, we have the data member's type, which again can be primitive or
+                complex. Finally, we have the actual name of the data member in camelCase.
+                Now, how do we actually set the values of the defined data members? This
+                happens in the only method we will go over right now because it is so special
+                and imperative to learn: the class constructor method.
+
+                A constructor for a class is almost always public, and is the special method
+                that your code uses to create what is called an \"instance\" of a class in
+                your code when it is running--we'll get to this in a minute. The constructor
+                structure is as such:
+
+                        <optional access modifier> <class Name>(<a function argument list>) {
+                            // Set the internal data members here and any other object
+                            // initialization code.
+                        }
+
+                So, looking at our Point class as an example:
+
+                            public class Point {
+                                public int x;
+                                public int y;
+
+                                // The Constructor
+                                public Point(int x, int y) {
+                                    this.x = x;
+                                    this.y = y;
+                                }
+                            }
+
+                You can see here I have marked the constructor as public, and then we have
+                the constructor name itself--which is just the same exact name as the class.
+                We then have the matching argument list in the constructor to the data members
+                in the class. This is extremely important: with out giving data to the
+                constructor, the class instance (the object) won't be able to store any data.
+                Now, something to note: the argument names inside of the constructor definition
+                don't have to match the exact names of the data members; but the standard is to
+                name them the same as the data members. Then, using that input data, we then
+                need to use that data in our constructor to set the internal data members of
+                that object. We now come to our next keyword: \"this\". The \"this\" keyword
+                means, \"give me access to the current object instance.\" That then gives the
+                developer the ability to read from or write to that data member. In the
+                example's case, we are writing to the instance. So, now that we have the class
+                setup, how do we actually use a class?
+
+                To use a class we must make a variable for the instanciated object. Let's first
+                define that variable:
+
+                            Point point;
+                """);
+        Point point;
+
+        out.println("""
+                We now have a variable that can store a Point object. How do we create an
+                object of type Point?
+
+                            point = new Point(1, 2);
+                """);
+        point = new Point(1, 2);
+
+        out.println("""
+                Fantastic! We now have a Point variable, called point, that holds a Point
+                object. Now, before we continue let's talk about the instance (object) vs.
+                class business.
+
+                A class in a template, a recipe by which to create an instance of that class
+                (an object). So, a class shows what an object is made up of, what makes that
+                thing a particular thing, while the object is a real individual of that thing.
+                Let me demonstate this with a different class: the Person class.
+
+                            public class Person {
+                                public int age;
+                                public String name;
+
+                                public Person(int age, String name) {
+                                    this.age = age;
+                                    this.name = name;
+                                }
+                            }
+
+                This class is a template to create a Person. A person has an age, and a name.
+                Though, as you can imagine, this class isn't referring to a real individual
+                person: this is just how we are representing a person. I want to, in my
+                program, represent a person. How would I do this?
+
+
+                            Person tom = new Person(40, "Tom");
+                            Person harry = new Person(30, "Michael");
+                """);
+        Person tom = new Person(40, "Tom");
+        Person harry = new Person(30, "Michael");
+
+        out.println("""
+                As you can see here, we are creating a person (object) from our Person
+                template (class). Each instance of a Person is held within a Person variable.
+                Now you can see how the class is a template, and how the usage of that class is
+                an object (instance).
+
+                Now that we have objects, how would we use them? This is done mostly by using
+                methods that are a part of a class, or by accessing data members. For example,
+                I can output the names and ages of a Person:
+
+                            out.println(tom.name + " is " + tom.age + " years old.");
+                            out.println(harry.name + " is " + harry.age + " years old.");
+                """);
+        out.println(tom.name + " is " + tom.age + " years old.");
+        out.println(harry.name + " is " + harry.age + " years old.");
+
+        out.println("""
+
+                I could even do it like this, which is much better:
+                
+                        public static void personAnnounce(Person person) {
+                            out.println(person.name + " is " + person.age + " years old.");
+                        }
+
+                With that function I can then use it like this:
+
+                            personAnnounce(tom);
+                            personAnnounce(harry);
+                """);
+        personAnnounce(tom);
+        personAnnounce(harry);
+
+        out.println("""
+
+                With the function personAnnounce(), I can then pass in any Person variable and
+                have it output a Person object's data the same no matter what Person is passed
+                in! This is very useful. By making a class, and then using it to create objects,
+                we are able to group together data that should be grouped into a singular,
+                logical unit so that it is easier to reason about, and access for the computer.
+                """);
+    }
+    
+    // --------------------------------------------------------------------------------------------
+    public static void personAnnounce(Person person) {
+        out.println(person.name + " is " + person.age + " years old.");
     }
 
     // --------------------------------------------------------------------------------------------
