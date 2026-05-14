@@ -10,6 +10,38 @@ public class Main {
                 ---------------------------------------------------------------------------
                 """);
 
+        logicalOperators();
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void logicalOperators() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                        The Logical Operators
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                The logical values have their own type: they are called booleans. A valid
+                boolean value can either be \"true\" or it can be \"false\". A boolean
+                variable can be created like this:
+
+                            boolean isLowerCase = false;
+                """);
+        @SuppressWarnings("unused")
+        boolean isLowerCase = false;
+
+        out.println("""
+                A boolean value is a primitive type, and is not a single bit--like you may
+                imagine since the computer only has to represent two values. Technically,
+                the size is undefined and is up to the JVM implementation, but its probably
+                a single, whole, byte. Do not confuse this with the Boolean type. This is a
+                object--a.k.a. a complex type. It provides some utility methods, but since
+                it is a whole object it's size is much larger: a Boolean could be four or
+                eight bytes--this is four to eight times larger than a primitive boolean!
+                So, only use a Boolean if you really, really need the added functionality.
+                Please, be memory conscious.
+                """);
     }
 
     // --------------------------------------------------------------------------------------------
