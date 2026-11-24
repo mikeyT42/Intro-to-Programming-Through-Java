@@ -137,7 +137,6 @@ public class Main {
     }
 
     // --------------------------------------------------------------------------------------------
-    @SuppressWarnings("all")
     public static void theEqualsToOperator() {
         out.println("""
                 ---------------------------------------------------------------------------
@@ -288,10 +287,10 @@ public class Main {
 
         ifStatements();
         switchStatements();
-        while_loops();
-        for_loops();
-        do_while_loops();
-        tryCatchFinally();
+        whileLoops();
+        forLoops();
+        doWhileLoops();
+        // tryCatchFinally();
     }
 
     // --------------------------------------------------------------------------------------------
@@ -340,7 +339,7 @@ public class Main {
                     """);
         }
     }
-    
+
     // --------------------------------------------------------------------------------------------
     public static void switchStatements() {
         out.println("""
@@ -349,80 +348,285 @@ public class Main {
                 ---------------------------------------------------------------------------
                 """);
 
-  out.println("""
-       The \"switch\" statement is a simplified series of \"if\" statements.
-       It will only work on numbers types and matches exactly on that
-       number, so it is not exactly useful for floating point types. It will
-       work on integers types and enums, and technically works on boolean
-       types; though, it is not as useful for that. It also works on the
-       char data type since characters are just numbers mapped to
-       characters. Really, it's purpose is to test a series of things and
-       then execute certain code.
-       """);
+        out.println("""
+                The \"switch\" statement is a simplified series of \"if\" statements.
+                It will only work on numbers types and matches exactly on that
+                number, so it is not exactly useful for floating point types. It will
+                work on integers types and enums, and technically works on boolean
+                types; though, it is not as useful for that. It also works on the
+                char data type since characters are just numbers mapped to
+                characters. Really, it's purpose is to test a series of things and
+                then execute certain code.
+                """);
 
-  int i = 1;
-  switch (i) {
-  case 1:
-    out.println("i is 1.");
-    break;
-  case 2:
-    puts("i is 2; which won't happen in this case.");
-    break;
-  default:
-    puts("The default case, we'll get to this in a second.");
-    break;
-  }
+        int i = 1;
+        switch (i) {
+            case 1:
+                out.println("i is 1.");
+                break;
+            case 2:
+                out.println("i is 2; which won't happen in this case.");
+                break;
+            default:
+                out.println("The default case, we'll get to this in a second.");
+                break;
+        }
 
-  puts("\nAs you can see, we use the \"break\" statement at the end of each\n"
-       "\"case\" block. This is important. If we don't do this, then the next\n"
-       "\"case\" block is executed until we hit a \"break\". Let me show\n"
-       "that.\n");
+        out.println("""
+                  \nAs you can see, we use the \"break\" statement at the end of each
+                  \"case\" block. This is important. If we don't do this, then the next
+                  \"case\" block is executed until we hit a \"break\". Let me show that.
+                """);
 
-  int d = 1;
-  switch (d) {
-  case 1:
-    printf("case 1 :: d = %i\n", d);
-  case 2:
-    printf("case 2 :: d = %i\n", d);
-    break;
-  default:
-    puts("The default case, we'll get to this in a second.");
-    break;
-  }
+        int d = 1;
+        switch (d) {
+            case 1:
+                out.printf("case 1 :: d = %i\n", d);
+            case 2:
+                out.printf("case 2 :: d = %i\n", d);
+                break;
+            default:
+                out.println("The default case, we'll get to this in a second.");
+                break;
+        }
 
-  puts("\nThe \"default\" case is there for when no other case can be\n"
-       "executed because none of the \"case\" statements matched. It is\n"
-       "particularly useful when handling errors.\n");
+        out.println("""
+                  The \"default\" case is there for when no other case can be executed
+                  because none of the \"case\" statements matched. It is particularly
+                  useful when handling errors.
+                """);
 
-  char c = 'z';
-  switch (c) {
-  case 'a':
-    puts("case a.");
-    break;
-  case 'b':
-    puts("case b.");
-    break;
-  default:
-    printf("default case :: c = %c\n", c);
-    break;
-  }
+        char c = 'z';
+        switch (c) {
+            case 'a':
+                out.println("case a.");
+                break;
+            case 'b':
+                out.println("case b.");
+                break;
+            default:
+                out.printf("default case :: c = %c\n", c);
+                break;
+        }
 
-  puts("\nThe \"switch\" statement is especially useful when used with\n"
-       "enums!\n");
+        out.println("""
+                 \nThe \"switch\" statement is especially useful when used with
+                 enums!
+                """);
 
-  enum Color { RED, GREEN, BLUE };
-  enum Color color = BLUE;
-  switch (color) {
-  case RED:
-    puts("Execute RED code.");
-    break;
-  case GREEN:
-    puts("Execute GREEN code.");
-    break;
-  case BLUE:
-    puts("Execute BLUE code.");
-    break;
-  }
+        enum Color {
+            RED, GREEN, BLUE
+        }
+        ;
+        Color color = Color.BLUE;
+        switch (color) {
+            case RED:
+                out.println("Execute RED code.");
+                break;
+            case GREEN:
+                out.println("Execute GREEN code.");
+                break;
+            case BLUE:
+                out.println("Execute BLUE code.");
+                break;
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void whileLoops() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            The \"while\" Loop
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                   This is our first loop kind. Loops are used to iterate over sets of data and to
+                   gather input from a user until we decide to leave the loop. The way we express
+                   these loops in words is kind of like this:
+                                 \"While 'x' is true, do 'y'.\"
+                   Loops, like \"while,\" need to be left and entered using some kind of
+                   condition. Here, again, we can use our conditional operators. Let's see how we
+                   can iterate and do some counting up to a number.
+                """);
+
+        int i = 0;
+        final int END = 10;
+        while (i <= END) {
+            out.printf("i = %i\n", i);
+            i++;
+        }
+
+        out.println("""
+                As you can see, we counted until 10. We can write this same loop using the
+                \"break\" statement. This word allows us to exit the loop from the body of the
+                loop. It is very useful for input loops. We have to execute the infinite
+                \"while\" loop using while(TRUE) which will run for infinity (or until
+                stack-overflow or no more memory) because the conditional statement always
+                evaluates to true. It is a best-practice to check the loop exit condtion at
+                the beginning of the loop for \"while\" loops; they can technically be anywhere
+                though and depends on the required logic.
+                """);
+
+        int d = 0;
+        final int SENTINEL = 10;
+        while (true) {
+            if (d > SENTINEL)
+                break;
+
+            out.printf("d = %i\n", d);
+            d++;
+        }
+
+        out.println("""
+                Sometimes, there are instances where we need to skip a loop iteration. This
+                is done using the \"continue\" keyword. Let's use this keyword to skip the
+                number 3 in a loop until 10.
+                """);
+
+        int f = 0;
+        while (f <= END) {
+            if (f == 3) {
+                f++;
+                continue;
+            }
+
+            out.printf("f = %i\n", f);
+            f++;
+        }
+
+        out.println("""
+                I usually don't use \"while\" loops; the only reason being that I find the
+                other loops to be more useful.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void forLoops() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            The \"for\" Loop
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                The \"for\" loop is very similar to the \"while\" loop, but it simply handles
+                counting for us. Let's take an example loop that counts to 10.
+                """);
+
+        for (int x = 0; x <= 10; x++) {
+            out.printf("x = %i\n", x);
+        }
+
+        out.println("""
+                This loop can be expressed in language as such:
+                      \"For integer 'x', while 'x' is less than or equal to 10, then do something,
+                       and then increment 'x'.\"
+                """);
+
+        out.println("""
+                The \"for\" loop allows us to declare and initialize a loop counter, check some
+                condition that usually uses the counter, and then something to execute at the
+                end of the iteration, which usually consists of incrementing the loop counter by
+                1. We can also initialize more than 1 thing in the initialization section of the
+                \"for\" loop.
+                """);
+
+        for (int x = 0, END = 10; x <= END; x++) {
+            out.printf("x = %i\n", x);
+        }
+
+        out.println("""
+                We can also make an infinite \"for\" loop. There used to be certain compiler
+                optimizations that were in favor of the infinite \"for\" loop; but now-a-days
+                they are the same performance wise.
+                """);
+
+        final int SENTINEL = 10;
+        int x = 0;
+        for (;;) {
+            if (x > SENTINEL)
+                break;
+
+            out.printf("x = %i\n", x);
+            x++;
+        }
+
+        out.println("""
+                As you can see, we can use the \"break\" keyword in \"for\" loops. We can also
+                use the \"continue\" keyword.
+                """);
+
+        for (int i = 0, END = 10; i <= END; i++) {
+            if (i == 3)
+                continue;
+
+            out.printf("i = %i\n", i);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void doWhileLoops() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            The \"do-while\" Loop
+                ---------------------------------------------------------------------------
+                """);
+        out.println("""
+                The \"do-while\" loop is nearly identical to the \"while\" loop. The
+                difference is that the loop's conditional check happens after the first
+                iteration, and not the beginning of the loop. Let's count to 10 again:
+                """);
+
+        int x = 0;
+        final int END = 10;
+        do {
+            out.printf("x = %i\n", x);
+            x++;
+        } while (x <= END);
+
+        out.println("""
+                This loop is particularly useful for user input loops. I'll model that up
+                with strings.
+                """);
+
+        // TODO make a more java, real user input loop.
+        do {
+            char[] input = new char[50];
+            char SENTINEL = '\n';
+
+            // Gather input from the user.
+            input[0] = SENTINEL;
+
+            if (input[0] == SENTINEL)
+                break;
+
+            // Do some stuff with the user's input.
+        } while (true);
+
+        out.println("""
+                This loop allows the user to first enter input, and then we are able to
+                check that input. We can also use \"break\" and \"continue\" in \"do-while\"
+                loops. I won't show it here though.
+                """);
+    }
+
+    // --------------------------------------------------------------------------------------------
+    public static void tryCatchFinally() {
+        out.println("""
+                ---------------------------------------------------------------------------
+                            The \"try-catch\" and \"try-catch-finally\" Statement
+                ---------------------------------------------------------------------------
+                """);
+
+        out.println("""
+                This is the final control structure we will go over. It has to do with
+                errors and how we account for and handle them. Errors are a particular
+                thing in Java: they are called \"Exceptions\" and are a type of \"Object\".
+                We are going to have to have a small tangent to understand a few things.
+
+                Exceptions are states in the program where errors have occurred. 
+                """);
     }
 
     // --------------------------------------------------------------------------------------------

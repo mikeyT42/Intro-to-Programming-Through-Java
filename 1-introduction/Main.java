@@ -202,7 +202,6 @@ public class Main {
          * line starts with a star symbol. It ends with a star and forward slash
          * adjacent to each other.
          */
-
         out.println("""
                 Comments are a good way to communicate weird things that the code is
                 doing. Comments should NOT explain the code. They should simply be used
@@ -309,6 +308,7 @@ public class Main {
                             int myInteger2 = 50;
                 """);
         int myInteger2 = 50;
+        myInteger2 = 51;
 
         out.println("""
                 Let's see what is inside of myInteger2:
